@@ -1,0 +1,937 @@
+{
+  "name": "boomcellar-datasets",
+  "title": "BoomCellar datasets",
+  "homepage": "https://boomcellar.com/data",
+  "version": "1.21",
+  "created": "2026-10-09",
+  "licenses": [
+    {
+      "name": "attribution",
+      "title": "Free to use, including commercially, with attribution to BoomCellar (https://boomcellar.com).",
+      "path": "https://boomcellar.com/data"
+    }
+  ],
+  "resources": [
+    {
+      "name": "companies",
+      "title": "Listed wine companies",
+      "description": "Every company in the BoomCellar register: the index constituents, the listed wine companies tracked but not indexed, those excluded and why, and those that have left the market.",
+      "path": "https://boomcellar.com/data/companies.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "bc_id",
+            "type": "string",
+            "description": "Permanent BoomCellar company ID. Never reused."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Company name."
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "description": "Indexed · Tracked, not indexed · Eligible, awaiting reconstitution · Excluded · Delisted."
+          },
+          {
+            "name": "status_detail",
+            "type": "string",
+            "description": "Why a tracked or excluded company is not in the index (for example below the 50% wine-revenue rule)."
+          },
+          {
+            "name": "ticker",
+            "type": "string",
+            "description": "Ticker as used by BoomCellar (Yahoo Finance convention, exchange suffix included)."
+          },
+          {
+            "name": "former_tickers",
+            "type": "string",
+            "description": "Earlier tickers of the same listing, separated by |."
+          },
+          {
+            "name": "exchange",
+            "type": "string",
+            "description": "Listing venue."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Country of the listing's home market."
+          },
+          {
+            "name": "trading_currency",
+            "type": "string",
+            "description": "ISO 4217 currency the share trades in."
+          },
+          {
+            "name": "isin",
+            "type": "string",
+            "description": "ISIN of the listed share. Empty = not found."
+          },
+          {
+            "name": "isin_source",
+            "type": "string",
+            "description": "primary (issuer or exchange filing) · gleif (GLEIF LEI–ISIN record) · cross-checked (two identifier services agree) · sec-cusip (built from the CUSIP on the company's SEC filing) · secondary (one dated secondary record — see identifier_note)."
+          },
+          {
+            "name": "lei",
+            "type": "string",
+            "description": "Legal Entity Identifier from GLEIF. Empty = none in GLEIF (many companies never registered one)."
+          },
+          {
+            "name": "lei_status",
+            "type": "string",
+            "description": "GLEIF status: ISSUED · LAPSED (not renewed, still the entity's identifier) · RETIRED (entity ended)."
+          },
+          {
+            "name": "lei_basis",
+            "type": "string",
+            "description": "gleif-isin (GLEIF links the LEI to this ISIN) · gleif-name (legal name and country match)."
+          },
+          {
+            "name": "identifier_note",
+            "type": "string",
+            "description": "What the identifier search found, and why a value is missing."
+          },
+          {
+            "name": "figi",
+            "type": "string",
+            "description": "OpenFIGI share-class FIGI of the ISIN (one per security, across every venue). Empty = no ISIN, or OpenFIGI has no record."
+          },
+          {
+            "name": "mic",
+            "type": "string",
+            "description": "ISO 10383 Market Identifier Code of the listing venue (the segment's own code where ISO lists one, for example AIMX for AIM)."
+          },
+          {
+            "name": "primary_listing",
+            "type": "boolean",
+            "description": "TRUE if the ticker is the company's primary listing; FALSE for a depositary receipt. Empty for a company that has left the market."
+          },
+          {
+            "name": "incorporation_country",
+            "type": "string",
+            "description": "Jurisdiction of formation (ISO 3166) from the company's GLEIF LEI record. Empty without an LEI."
+          },
+          {
+            "name": "incorporation_source",
+            "type": "string",
+            "description": "The GLEIF record it was read from."
+          },
+          {
+            "name": "reporting_currency",
+            "type": "string",
+            "description": "ISO 4217 currency of the company's reported results, from a filing in the results register. Empty until one is recorded."
+          },
+          {
+            "name": "fiscal_year_end",
+            "type": "string",
+            "description": "Month and day (MM-DD) the fiscal year ends, as a filed annual report states it."
+          },
+          {
+            "name": "fiscal_year_end_source",
+            "type": "string",
+            "description": "The report the fiscal year end was read from."
+          },
+          {
+            "name": "wine_member_from",
+            "type": "string",
+            "description": "Date the company joined BCWINE (the base date for a launch constituent)."
+          },
+          {
+            "name": "wine_member_to",
+            "type": "string",
+            "description": "Date the company was removed from BCWINE. Empty while it is a member."
+          },
+          {
+            "name": "in_wine",
+            "type": "boolean",
+            "description": "TRUE if a constituent of BCWINE (global) today."
+          },
+          {
+            "name": "in_cru",
+            "type": "boolean",
+            "description": "TRUE if a constituent of BCCRU (boutique, below €100m) today."
+          },
+          {
+            "name": "in_east",
+            "type": "boolean",
+            "description": "TRUE if a constituent of BCEAST (Asia-Pacific) today."
+          },
+          {
+            "name": "weight_wine_pct",
+            "type": "number",
+            "description": "Weight in BCWINE today, percent."
+          },
+          {
+            "name": "price_local",
+            "type": "number",
+            "description": "Latest close in the trading currency (constituents only)."
+          },
+          {
+            "name": "price_date",
+            "type": "string",
+            "description": "Session of that close."
+          },
+          {
+            "name": "shares_outstanding_m",
+            "type": "number",
+            "description": "Shares outstanding used for market capitalisation, millions. For index constituents, the filed count adopted at the reconstitution of 2 October 2026 (Bodegas Riojanas: the listed line; Changyu: the A line only)."
+          },
+          {
+            "name": "shares_source_url",
+            "type": "string",
+            "description": "Filing the share count was read from, where recorded."
+          },
+          {
+            "name": "shares_as_of",
+            "type": "string",
+            "description": "Date the share count refers to, where recorded."
+          },
+          {
+            "name": "shares_filed_m",
+            "type": "number",
+            "description": "Latest filed shares outstanding, millions, all classes summed (read 2026-09-30). Constituents price on it since the reconstitution of 2 October 2026, except where shares_outstanding_m names a rule."
+          },
+          {
+            "name": "shares_filed_classes",
+            "type": "string",
+            "description": "The filed count by share class: class=millions@date, separated by |."
+          },
+          {
+            "name": "shares_source_locator",
+            "type": "string",
+            "description": "Where in the filing the share count is printed (note, page)."
+          },
+          {
+            "name": "market_cap_usd_m",
+            "type": "number",
+            "description": "Price × shares, US dollars, millions (constituents only)."
+          },
+          {
+            "name": "market_cap_eur_m",
+            "type": "number",
+            "description": "Price × shares, euros, millions (constituents only)."
+          },
+          {
+            "name": "wine_revenue_share_pct",
+            "type": "number",
+            "description": "Share of revenue from selling wine, percent, from the company's own segment or product reporting. Blank where the company does not split it out."
+          },
+          {
+            "name": "wine_share_basis",
+            "type": "string",
+            "description": "Fiscal year and how the wine share was read, or why it is blank."
+          },
+          {
+            "name": "wine_share_source_url",
+            "type": "string",
+            "description": "Report the wine share was read from."
+          },
+          {
+            "name": "in_2015_universe",
+            "type": "boolean",
+            "description": "TRUE if the company was in the original 2015 BoomCellar universe."
+          },
+          {
+            "name": "in_register_since",
+            "type": "string",
+            "description": "Date the company entered the register (or the dated event that put it there)."
+          },
+          {
+            "name": "in_register_since_basis",
+            "type": "string",
+            "description": "exact · month · year (as precise as the record) · on_or_before (the register carried it by that date) · unread (an exit whose own date was not read; the date is then blank)."
+          },
+          {
+            "name": "left_market_on",
+            "type": "string",
+            "description": "Delisting date, for delisted companies."
+          },
+          {
+            "name": "note",
+            "type": "string",
+            "description": "Public note on the company's status."
+          },
+          {
+            "name": "page_url",
+            "type": "string",
+            "description": "Where the company is shown on boomcellar.com."
+          }
+        ]
+      }
+    },
+    {
+      "name": "delisted",
+      "title": "Delisted wine companies",
+      "description": "Wine companies that have left the stock market, how they left and when, with the evidence for each — the survivorship record behind the index.",
+      "path": "https://boomcellar.com/data/delisted.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "bc_id",
+            "type": "string",
+            "description": "Permanent BoomCellar company ID."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Company name at the time it left."
+          },
+          {
+            "name": "last_ticker",
+            "type": "string",
+            "description": "Last ticker, where known."
+          },
+          {
+            "name": "venue",
+            "type": "string",
+            "description": "Exchange it left."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Country."
+          },
+          {
+            "name": "how_it_left",
+            "type": "string",
+            "description": "Taken private · Squeeze-out · Merged · Insolvency · Voluntary delisting · Wound down · Delisting approved (scheduled)."
+          },
+          {
+            "name": "cause_code",
+            "type": "string",
+            "description": "Machine code of how_it_left."
+          },
+          {
+            "name": "effective_date",
+            "type": "string",
+            "description": "Date the exit took effect. Empty = not established."
+          },
+          {
+            "name": "date_basis",
+            "type": "string",
+            "description": "What that date is (for example the last day of trading, or the date the squeeze-out completed)."
+          },
+          {
+            "name": "acquirer",
+            "type": "string",
+            "description": "Buyer, where there was one."
+          },
+          {
+            "name": "consideration",
+            "type": "string",
+            "description": "Price paid or deal value, as the source states it."
+          },
+          {
+            "name": "premium",
+            "type": "string",
+            "description": "Premium paid, as the source states it."
+          },
+          {
+            "name": "evidence_tier",
+            "type": "number",
+            "description": "1 = exchange, regulator or company filing · 2 = court or specialist register · 3 = press only."
+          },
+          {
+            "name": "evidence_tier_label",
+            "type": "string",
+            "description": "The tier in words."
+          },
+          {
+            "name": "primary_source_url",
+            "type": "string",
+            "description": "The first source for the row."
+          },
+          {
+            "name": "source_urls",
+            "type": "string",
+            "description": "Every source, separated by |."
+          },
+          {
+            "name": "open_questions",
+            "type": "string",
+            "description": "What the evidence does not establish."
+          }
+        ]
+      }
+    },
+    {
+      "name": "calendar",
+      "title": "Wine stock investor calendar",
+      "description": "Results, AGMs, dividends and other dated events for listed wine companies, each read from the company's own calendar or filing, with a record of whether the date held.",
+      "path": "https://boomcellar.com/data/calendar.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "event_key",
+            "type": "string",
+            "description": "Stable key: ticker|event type|date."
+          },
+          {
+            "name": "bc_id",
+            "type": "string",
+            "description": "Permanent BoomCellar company ID."
+          },
+          {
+            "name": "company",
+            "type": "string",
+            "description": "Company name."
+          },
+          {
+            "name": "ticker",
+            "type": "string",
+            "description": "Ticker."
+          },
+          {
+            "name": "in_index",
+            "type": "boolean",
+            "description": "TRUE if the company is a BCWINE constituent."
+          },
+          {
+            "name": "event_type",
+            "type": "string",
+            "description": "Machine code (results, agm, ex-dividend, …)."
+          },
+          {
+            "name": "event_type_label",
+            "type": "string",
+            "description": "Event type in words."
+          },
+          {
+            "name": "date",
+            "type": "string",
+            "description": "Event date, local exchange date."
+          },
+          {
+            "name": "date_confidence",
+            "type": "string",
+            "description": "confirmed · provisional · estimated (a confirmed date whose source is over 90 days old reads provisional)."
+          },
+          {
+            "name": "estimate_basis",
+            "type": "string",
+            "description": "For an estimated date, the rule that produced it."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "The company's own wording for the event."
+          },
+          {
+            "name": "source_url",
+            "type": "string",
+            "description": "Where the date was read."
+          },
+          {
+            "name": "source_checked",
+            "type": "string",
+            "description": "Date the source was last read."
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "description": "upcoming · unrecorded (date passed, outcome not yet checked) · recorded."
+          },
+          {
+            "name": "outcome",
+            "type": "string",
+            "description": "For recorded events: occurred-as-scheduled · occurred-on-another-date · did-not-occur."
+          },
+          {
+            "name": "occurred_on",
+            "type": "string",
+            "description": "Actual date, when it differed."
+          },
+          {
+            "name": "outcome_verified_on",
+            "type": "string",
+            "description": "Date the outcome was checked."
+          },
+          {
+            "name": "outcome_source_url",
+            "type": "string",
+            "description": "Where the outcome was read."
+          }
+        ]
+      }
+    },
+    {
+      "name": "ipo-pipeline",
+      "title": "Wine IPO pipeline",
+      "description": "Wine companies preparing to list, with each filing stage dated from the filing or the exchange.",
+      "path": "https://boomcellar.com/data/ipo-pipeline.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Registrant's legal name, as filed."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Where the wine is made."
+          },
+          {
+            "name": "incorporated",
+            "type": "string",
+            "description": "Jurisdiction of the listing entity, where different."
+          },
+          {
+            "name": "venue",
+            "type": "string",
+            "description": "Venue(s) named in the filing."
+          },
+          {
+            "name": "reserved_ticker",
+            "type": "string",
+            "description": "Ticker reserved with the exchange (reserved is not trading)."
+          },
+          {
+            "name": "ticker",
+            "type": "string",
+            "description": "Trading ticker, once listed."
+          },
+          {
+            "name": "stage",
+            "type": "string",
+            "description": "confidential-draft · filed · priced · listed · postponed · withdrawn."
+          },
+          {
+            "name": "stage_label",
+            "type": "string",
+            "description": "Stage in words."
+          },
+          {
+            "name": "stage_date",
+            "type": "string",
+            "description": "Date the current stage was entered."
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "description": "TRUE while the listing is still in progress."
+          },
+          {
+            "name": "expected_date",
+            "type": "string",
+            "description": "Expected listing date, only where the company or exchange published one."
+          },
+          {
+            "name": "expected_basis",
+            "type": "string",
+            "description": "Where that date was published."
+          },
+          {
+            "name": "wine_share",
+            "type": "string",
+            "description": "What the filing says about the wine share of the business."
+          },
+          {
+            "name": "source_kind",
+            "type": "string",
+            "description": "filing · exchange · company."
+          },
+          {
+            "name": "source_url",
+            "type": "string",
+            "description": "Primary source."
+          },
+          {
+            "name": "source_checked",
+            "type": "string",
+            "description": "Date the source was last read."
+          },
+          {
+            "name": "note",
+            "type": "string",
+            "description": "Public qualifier on the company's disclosure."
+          }
+        ]
+      }
+    },
+    {
+      "name": "changes",
+      "title": "Changes log",
+      "description": "Every dated change to the methodology, the index membership and the register, newest first — the audit trail behind the published figures.",
+      "path": "https://boomcellar.com/data/changes.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "string",
+            "description": "Date of the change (for corporate actions, the date of the event)."
+          },
+          {
+            "name": "area",
+            "type": "string",
+            "description": "methodology · index · register · corporate action."
+          },
+          {
+            "name": "bc_id",
+            "type": "string",
+            "description": "Company ID, where the change concerns a company."
+          },
+          {
+            "name": "subject",
+            "type": "string",
+            "description": "What changed."
+          },
+          {
+            "name": "change",
+            "type": "string",
+            "description": "The change, in words."
+          },
+          {
+            "name": "reference",
+            "type": "string",
+            "description": "Commit of a methodology change, or the source of a company change."
+          }
+        ]
+      }
+    },
+    {
+      "name": "results",
+      "title": "Results register",
+      "description": "Reported results of listed wine companies: one row per figure, per company, per period, as the issuer published it, with the filing it was read from.",
+      "path": "https://boomcellar.com/data/results.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "Stable row ID: ticker-period end-metric."
+          },
+          {
+            "name": "bc_id",
+            "type": "string",
+            "description": "Permanent BoomCellar company ID."
+          },
+          {
+            "name": "ticker",
+            "type": "string",
+            "description": "Ticker."
+          },
+          {
+            "name": "period_kind",
+            "type": "string",
+            "description": "H1 · H2 · Q1–Q4 · FY, as the issuer reports."
+          },
+          {
+            "name": "period_end",
+            "type": "string",
+            "description": "Last day of the reporting period."
+          },
+          {
+            "name": "metric",
+            "type": "string",
+            "description": "revenue · wine_revenue_share · dividend_per_share · net_result."
+          },
+          {
+            "name": "value",
+            "type": "number",
+            "description": "The figure as published, in scale units of currency."
+          },
+          {
+            "name": "prior_value",
+            "type": "number",
+            "description": "The same period a year earlier, same basis, as published. Empty = not read."
+          },
+          {
+            "name": "scale",
+            "type": "string",
+            "description": "unit · thousand · million · billion."
+          },
+          {
+            "name": "currency",
+            "type": "string",
+            "description": "ISO 4217 currency of the figure (% for a share)."
+          },
+          {
+            "name": "basis",
+            "type": "string",
+            "description": "reported · comparable (the issuer's like-for-like scope) · restated."
+          },
+          {
+            "name": "standing",
+            "type": "string",
+            "description": "reported (the issuer's own publication) · filed (a filing read through a relay)."
+          },
+          {
+            "name": "reported_on",
+            "type": "string",
+            "description": "Date the issuer published the figure."
+          },
+          {
+            "name": "source_url",
+            "type": "string",
+            "description": "The filing the figure was read from."
+          },
+          {
+            "name": "source_locator",
+            "type": "string",
+            "description": "Where in the filing."
+          },
+          {
+            "name": "source_accessed",
+            "type": "string",
+            "description": "Date the filing was read."
+          },
+          {
+            "name": "brief_issue",
+            "type": "string",
+            "description": "Monthly Brief issue that recorded the row."
+          },
+          {
+            "name": "note",
+            "type": "string",
+            "description": "What the figure is and is not."
+          }
+        ]
+      }
+    },
+    {
+      "name": "levels-wine-ew",
+      "title": "WINE Equal Weight (companion series) — levels record",
+      "description": "WINE Equal Weight (companion series): one row per session, append-only, SHA-256 chained. Resets every constituent to 1/N at the close of the last trading session of each calendar quarter, from the 2026-12-31 session.",
+      "path": "https://boomcellar.com/data/levels/wine-ew.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "string",
+            "description": "Session date (ISO 8601)."
+          },
+          {
+            "name": "level_usd",
+            "type": "number",
+            "description": "Published level in US dollars, four decimals."
+          },
+          {
+            "name": "level_eur",
+            "type": "number",
+            "description": "The same level in euro, each session at its own rate."
+          },
+          {
+            "name": "level_local",
+            "type": "number",
+            "description": "The level with exchange rates held at the base date."
+          },
+          {
+            "name": "constituents",
+            "type": "number",
+            "description": "Members in the series on that session."
+          },
+          {
+            "name": "live_quotes",
+            "type": "number",
+            "description": "Members with a live quote on that session."
+          },
+          {
+            "name": "methodology",
+            "type": "string",
+            "description": "Methodology version in force when the row was recorded."
+          },
+          {
+            "name": "recorded_at",
+            "type": "string",
+            "description": "When the row was written (UTC)."
+          },
+          {
+            "name": "late",
+            "type": "number",
+            "description": "1 when the row was recorded after its session's own night."
+          },
+          {
+            "name": "inputs_sha256",
+            "type": "string",
+            "description": "SHA-256 digest of the inputs the level used (not published)."
+          },
+          {
+            "name": "prev_sha256",
+            "type": "string",
+            "description": "The previous row's row_sha256."
+          },
+          {
+            "name": "row_sha256",
+            "type": "string",
+            "description": "SHA-256 of this row's cells and prev_sha256."
+          },
+          {
+            "name": "divisor",
+            "type": "string",
+            "description": "Basket value the level divides: close × dollar rate × shares (millions) over the members, ÷ (level ÷ 100). Blank for equal weighting."
+          },
+          {
+            "name": "event_ref",
+            "type": "string",
+            "description": "The continuity-ledger event in force on the session (events/<series>.jsonl#<line>)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "listed-wine-map",
+      "title": "Listed Wine Map",
+      "description": "Estates, wineries, vineyards and cellars owned or run as their own by the constituents of the BoomCellar Wine Stock Index, one row per site, each with the filing or official page it was read from. Coordinates from Wikidata (CC0).",
+      "path": "https://boomcellar.com/data/listed-wine-map.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "Stable site ID."
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "The site's own name."
+          },
+          {
+            "name": "kind",
+            "type": "string",
+            "description": "estate (vineyard and winery at one site) · winery · vineyard · cellars."
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "description": "owned (owned, or run as its own) · leased · divested · unverified, as the filing states."
+          },
+          {
+            "name": "bc_id",
+            "type": "string",
+            "description": "Permanent BoomCellar company ID of the listed owner."
+          },
+          {
+            "name": "ticker",
+            "type": "string",
+            "description": "The listed owner's ticker."
+          },
+          {
+            "name": "company",
+            "type": "string",
+            "description": "The listed owner."
+          },
+          {
+            "name": "brand",
+            "type": "string",
+            "description": "The consumer brand most associated with the site; empty when none."
+          },
+          {
+            "name": "locality",
+            "type": "string",
+            "description": "Town or village as the source names it."
+          },
+          {
+            "name": "region",
+            "type": "string",
+            "description": "Wine region or appellation as the source names it."
+          },
+          {
+            "name": "country",
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2."
+          },
+          {
+            "name": "address",
+            "type": "string",
+            "description": "Street address as the company gives it; empty when none."
+          },
+          {
+            "name": "lat",
+            "type": "number",
+            "description": "WGS84 latitude, from Wikidata."
+          },
+          {
+            "name": "lon",
+            "type": "number",
+            "description": "WGS84 longitude, from Wikidata."
+          },
+          {
+            "name": "coord_level",
+            "type": "string",
+            "description": "point = the site's own Wikidata item; locality = the town's centre; none = not placed."
+          },
+          {
+            "name": "hectares",
+            "type": "number",
+            "description": "Vineyard hectares a primary source states for this site; empty = not stated (never estimated)."
+          },
+          {
+            "name": "hectares_basis",
+            "type": "string",
+            "description": "What the hectares count, and any unit conversion."
+          },
+          {
+            "name": "stake_pct",
+            "type": "number",
+            "description": "The listed company's holding in the entity that holds the site, as filed; empty = not stated."
+          },
+          {
+            "name": "evidence_grade",
+            "type": "string",
+            "description": "high = the filing states the site is the company's; medium = it names the company's or a controlled subsidiary's operating site without stating title."
+          },
+          {
+            "name": "grade_basis",
+            "type": "string",
+            "description": "Why, in one sentence."
+          },
+          {
+            "name": "source_url",
+            "type": "string",
+            "description": "The filing or official page the ownership is read from."
+          },
+          {
+            "name": "source_locator",
+            "type": "string",
+            "description": "Where in that document."
+          },
+          {
+            "name": "visit_url",
+            "type": "string",
+            "description": "The official page offering visits or tastings; empty = none found."
+          },
+          {
+            "name": "checked",
+            "type": "string",
+            "description": "The date the row was read at source."
+          }
+        ]
+      },
+      "licenses": [
+        {
+          "name": "CC-BY-4.0",
+          "title": "CC BY 4.0",
+          "path": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      ]
+    }
+  ]
+}
