@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below, and carry the edition date with any figure."
+type: dataset
+title: "Listed wine companies — the BoomCellar register"
+authors:
+  - name: "BoomCellar"
+    website: "https://boomcellar.com"
+version: "1.21"
+date-released: 2026-10-09
+url: "https://boomcellar.com/data"
+repository: "https://github.com/jukkablomberg/listed-wine-companies"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23092835
+    description: "BoomCellar methodology (concept DOI, Zenodo)"
+keywords:
+  - wine
+  - listed companies
+  - equities
+  - delistings
+  - survivorship
+  - ISIN
+  - LEI
+abstract: "Every stock-market-listed wine company BoomCellar has found: permanent IDs, identifiers, index status, share counts with their filing sources, and an exit register for companies that left the market, each exit graded by evidence. Edition 2026-10-09 of data package v1.21, byte-identical to https://boomcellar.com/data. Free to use, including commercially, with attribution to BoomCellar. Information, not investment advice."
