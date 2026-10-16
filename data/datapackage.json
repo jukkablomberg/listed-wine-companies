@@ -1,22 +1,22 @@
 {
   "name": "boomcellar-datasets",
-  "title": "BoomCellar datasets",
-  "homepage": "https://boomcellar.com/data",
-  "version": "1.21",
-  "created": "2026-10-09",
+  "title": "VINCAP datasets",
+  "homepage": "https://vincap.co/data",
+  "version": "1.24",
+  "created": "2026-10-16",
   "licenses": [
     {
       "name": "attribution",
-      "title": "Free to use, including commercially, with attribution to BoomCellar (https://boomcellar.com).",
-      "path": "https://boomcellar.com/data"
+      "title": "Free to use, including commercially, with attribution to VINCAP (https://vincap.co).",
+      "path": "https://vincap.co/data"
     }
   ],
   "resources": [
     {
       "name": "companies",
       "title": "Listed wine companies",
-      "description": "Every company in the BoomCellar register: the index constituents, the listed wine companies tracked but not indexed, those excluded and why, and those that have left the market.",
-      "path": "https://boomcellar.com/data/companies.csv",
+      "description": "Every company in the VINCAP register: the index constituents, the listed wine companies tracked but not indexed, those excluded and why, and those that have left the market.",
+      "path": "https://vincap.co/data/companies.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
@@ -25,7 +25,7 @@
           {
             "name": "bc_id",
             "type": "string",
-            "description": "Permanent BoomCellar company ID. Never reused."
+            "description": "Permanent VINCAP company ID. Never reused."
           },
           {
             "name": "name",
@@ -45,7 +45,7 @@
           {
             "name": "ticker",
             "type": "string",
-            "description": "Ticker as used by BoomCellar (Yahoo Finance convention, exchange suffix included)."
+            "description": "Ticker as used by VINCAP (Yahoo Finance convention, exchange suffix included)."
           },
           {
             "name": "former_tickers",
@@ -260,7 +260,7 @@
           {
             "name": "page_url",
             "type": "string",
-            "description": "Where the company is shown on boomcellar.com."
+            "description": "Where the company is shown on vincap.co."
           }
         ]
       }
@@ -269,7 +269,7 @@
       "name": "delisted",
       "title": "Delisted wine companies",
       "description": "Wine companies that have left the stock market, how they left and when, with the evidence for each — the survivorship record behind the index.",
-      "path": "https://boomcellar.com/data/delisted.csv",
+      "path": "https://vincap.co/data/delisted.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
@@ -278,7 +278,7 @@
           {
             "name": "bc_id",
             "type": "string",
-            "description": "Permanent BoomCellar company ID."
+            "description": "Permanent VINCAP company ID."
           },
           {
             "name": "name",
@@ -367,7 +367,7 @@
       "name": "calendar",
       "title": "Wine stock investor calendar",
       "description": "Results, AGMs, dividends and other dated events for listed wine companies, each read from the company's own calendar or filing, with a record of whether the date held.",
-      "path": "https://boomcellar.com/data/calendar.csv",
+      "path": "https://vincap.co/data/calendar.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
@@ -381,7 +381,7 @@
           {
             "name": "bc_id",
             "type": "string",
-            "description": "Permanent BoomCellar company ID."
+            "description": "Permanent VINCAP company ID."
           },
           {
             "name": "company",
@@ -470,7 +470,7 @@
       "name": "ipo-pipeline",
       "title": "Wine IPO pipeline",
       "description": "Wine companies preparing to list, with each filing stage dated from the filing or the exchange.",
-      "path": "https://boomcellar.com/data/ipo-pipeline.csv",
+      "path": "https://vincap.co/data/ipo-pipeline.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
@@ -568,7 +568,7 @@
       "name": "changes",
       "title": "Changes log",
       "description": "Every dated change to the methodology, the index membership and the register, newest first — the audit trail behind the published figures.",
-      "path": "https://boomcellar.com/data/changes.csv",
+      "path": "https://vincap.co/data/changes.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
@@ -611,7 +611,7 @@
       "name": "results",
       "title": "Results register",
       "description": "Reported results of listed wine companies: one row per figure, per company, per period, as the issuer published it, with the filing it was read from.",
-      "path": "https://boomcellar.com/data/results.csv",
+      "path": "https://vincap.co/data/results.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
@@ -625,7 +625,7 @@
           {
             "name": "bc_id",
             "type": "string",
-            "description": "Permanent BoomCellar company ID."
+            "description": "Permanent VINCAP company ID."
           },
           {
             "name": "ticker",
@@ -660,7 +660,7 @@
           {
             "name": "scale",
             "type": "string",
-            "description": "unit · thousand · million · billion."
+            "description": "unit · thousand · million · crore · billion."
           },
           {
             "name": "currency",
@@ -700,7 +700,12 @@
           {
             "name": "brief_issue",
             "type": "string",
-            "description": "Monthly Brief issue that recorded the row."
+            "description": "Monthly Brief issue that recorded the row. Empty = read straight from the filing."
+          },
+          {
+            "name": "line_label",
+            "type": "string",
+            "description": "The issuer's own name for the line, as printed. Empty = the metric name."
           },
           {
             "name": "note",
@@ -714,7 +719,7 @@
       "name": "levels-wine-ew",
       "title": "WINE Equal Weight (companion series) — levels record",
       "description": "WINE Equal Weight (companion series): one row per session, append-only, SHA-256 chained. Resets every constituent to 1/N at the close of the last trading session of each calendar quarter, from the 2026-12-31 session.",
-      "path": "https://boomcellar.com/data/levels/wine-ew.csv",
+      "path": "https://vincap.co/data/levels/wine-ew.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
@@ -796,8 +801,8 @@
     {
       "name": "listed-wine-map",
       "title": "Listed Wine Map",
-      "description": "Estates, wineries, vineyards and cellars owned or run as their own by the constituents of the BoomCellar Wine Stock Index, one row per site, each with the filing or official page it was read from. Coordinates from Wikidata (CC0).",
-      "path": "https://boomcellar.com/data/listed-wine-map.csv",
+      "description": "Estates, wineries, vineyards and cellars owned or run as their own by the constituents of the VINCAP Wine Stock Index, one row per site, each with the filing or official page it was read from. Coordinates from Wikidata (CC0).",
+      "path": "https://vincap.co/data/listed-wine-map.csv",
       "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
@@ -826,7 +831,7 @@
           {
             "name": "bc_id",
             "type": "string",
-            "description": "Permanent BoomCellar company ID of the listed owner."
+            "description": "Permanent VINCAP company ID of the listed owner."
           },
           {
             "name": "ticker",
