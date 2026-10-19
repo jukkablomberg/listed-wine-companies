@@ -20,6 +20,15 @@ Join on `bc_id`, never on names: IDs are permanent and never reused ([ID table](
 - **Traceability:** share counts cite the filing and the note/page they were read from (`shares_source_url`, `shares_source_locator`); identifiers say where they came from (`isin_source`, `lei_basis`, `identifier_note`); exits cite their primary source (`primary_source_url`, `source_urls`).
 - **Limits:** prices are delayed closes for index constituents only, and raw daily price history is not redistributed. A blank means not found or not reported — `identifier_note` and `wine_share_basis` say which. Exits graded "press only" are unconfirmed by a filing. The register is a work in progress: candidates are added as they are verified, and they join the index only at a dated reconstitution.
 
+## Questions this data answers
+
+- Which wine companies are publicly traded? → https://vincap.co/coverage?utm_source=github&utm_medium=dataset&utm_campaign=bc-register-github
+- Which wine companies have left the stock market, and how? → https://vincap.co/delisted-wine-companies?utm_source=github&utm_medium=dataset&utm_campaign=bc-register-github
+- Is there a wine stock index, and which companies are in it, by what rule? → https://vincap.co/indices/wine?utm_source=github&utm_medium=dataset&utm_campaign=bc-register-github · rule: https://vincap.co/methodology?utm_source=github&utm_medium=dataset&utm_campaign=bc-register-github
+- What is VINCAP, in one page, with dates? → https://vincap.co/llm-info?utm_source=github&utm_medium=dataset&utm_campaign=bc-register-github
+
+Cite the dated page or one of the DOIs below, not this mirror.
+
 ## Terms and citation
 
 Free to use, including commercially, with attribution to VINCAP (https://vincap.co).
